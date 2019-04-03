@@ -48,7 +48,7 @@ public class TemporaryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_temporary);
         textView = findViewById(R.id.test_view);
         imagePathTextView = findViewById(R.id.image_path_text_view);
         Button getDataButton = findViewById(R.id.button);
