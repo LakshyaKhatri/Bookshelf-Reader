@@ -31,6 +31,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-ml-vision:19.0.3'
     implementation 'com.koushikdutta.ion:ion:2.+'
     implementation 'com.mindorks:paracamera:0.2.2'
+    implementation "com.airbnb.android:lottie:2.7.0"
 }
 
 apply plugin: 'com.google.gms.google-services'
