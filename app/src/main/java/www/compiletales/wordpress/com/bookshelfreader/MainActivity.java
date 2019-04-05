@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
     String baseURL = "";
     Camera camera;
-    String objectCreatedID = "";
     // Views
     Button captureImageFromCamera;
     Button chooseImageFromGallery;
@@ -97,7 +96,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+        final Intent intent = new Intent(MainActivity.this, SpineLineDrawnPreviewActivity.class);
+        intent.putExtra("BASE_URL", baseURL);
         if (requestCode == CHOOSE_IMAGE_FROM_GALLERY && resultCode == RESULT_OK && null != data) {
 
             imagePath = getSelectedImagePath(data);
@@ -105,7 +105,11 @@ public class MainActivity extends AppCompatActivity {
             proceedIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    uploadImage(imagePath);
+                    String objectCreatedID = uploadImage(imagePath);
+                    if(objectCreatedID != null) {
+                        intent.putExtra("SERVER_OBJECT_ID", objectCreatedID);
+                        startActivity(intent);
+                    }
                 }
             });
 
@@ -113,7 +117,11 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == Camera.REQUEST_TAKE_PHOTO && resultCode == Activity.RESULT_OK) {
             imagePath = camera.getCameraBitmapPath();
-            uploadImage(imagePath);
+            String objectCreatedID = uploadImage(imagePath);
+            if(objectCreatedID != null) {
+                intent.putExtra("SERVER_OBJECT_ID", objectCreatedID);
+                startActivity(intent);
+            }
         }
     }
 
@@ -156,11 +164,11 @@ public class MainActivity extends AppCompatActivity {
         return path;
     }
 
-    private void uploadImage(String imagePath){
+    private String uploadImage(String imagePath){
         final ProgressDialog pDialog = new ProgressDialog(getApplicationContext());
         pDialog.setMessage("Detecting Spines");
         pDialog.setCancelable(false);
-
+        final String objectCreatedID[] = new String[1];
         Ion.with(getApplicationContext())
                 .load("POST", baseURL + "api/create-bookshelf/?format=json")
                 .uploadProgressDialog(pDialog)
@@ -183,9 +191,10 @@ public class MainActivity extends AppCompatActivity {
 
                         HeadersResponse responseHeader = result.getHeaders();
                         Headers headers = responseHeader.getHeaders();
-                        objectCreatedID = headers.get("id");
+                        objectCreatedID[0] = headers.get("id");
                     }
                 });
+        return objectCreatedID[0];
     }
     @Override
     protected void onDestroy() {
