@@ -96,36 +96,25 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        final Intent intent = new Intent(MainActivity.this, SpineLineDrawnPreviewActivity.class);
-        intent.putExtra("BASE_URL", baseURL);
         if (requestCode == CHOOSE_IMAGE_FROM_GALLERY && resultCode == RESULT_OK && null != data) {
 
             imagePath = getSelectedImagePath(data);
-            ImageView proceedIcon = (ImageView) showImagePreview(imagePath);
-            proceedIcon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String objectCreatedID = uploadImage(imagePath);
-                    if(objectCreatedID != null) {
-                        intent.putExtra("SERVER_OBJECT_ID", objectCreatedID);
-                        startActivity(intent);
-                    }
-                }
-            });
-
+            showImagePreview(imagePath);
         }
 
         if (requestCode == Camera.REQUEST_TAKE_PHOTO && resultCode == Activity.RESULT_OK) {
             imagePath = camera.getCameraBitmapPath();
             String objectCreatedID = uploadImage(imagePath);
             if(objectCreatedID != null) {
+                Intent intent = new Intent(MainActivity.this, SpineLineDrawnPreviewActivity.class);
+                intent.putExtra("BASE_URL", baseURL);
                 intent.putExtra("SERVER_OBJECT_ID", objectCreatedID);
                 startActivity(intent);
             }
         }
     }
 
-    private View showImagePreview(String chosenImagePath){
+    private void showImagePreview(String chosenImagePath){
         Bitmap imageBitmap = BitmapFactory.decodeFile(chosenImagePath);
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.image_preview_popup, null);
@@ -148,7 +137,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         ImageView proceedIcon = layout.findViewById(R.id.proceed_check_view);
-        return proceedIcon;
+        proceedIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imagePreviewPopUp.dismiss();
+                String objectCreatedID = uploadImage(imagePath);
+                if(objectCreatedID != null) {
+                    Intent intent = new Intent(MainActivity.this, SpineLineDrawnPreviewActivity.class);
+                    intent.putExtra("BASE_URL", baseURL);
+                    intent.putExtra("SERVER_OBJECT_ID", objectCreatedID);
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     private String getSelectedImagePath(Intent data){
@@ -165,13 +166,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String uploadImage(String imagePath){
-        final ProgressDialog pDialog = new ProgressDialog(getApplicationContext());
+        final ProgressDialog pDialog = new ProgressDialog(MainActivity.this);
         pDialog.setMessage("Detecting Spines");
         pDialog.setCancelable(false);
+        pDialog.show();
         final String objectCreatedID[] = new String[1];
         Ion.with(getApplicationContext())
                 .load("POST", baseURL + "api/create-bookshelf/?format=json")
-                .uploadProgressDialog(pDialog)
                 .setTimeout(60 * 60 * 1000)
                 .setMultipartFile("image", "image/jpeg", new File(imagePath))
                 .asJsonObject()
@@ -180,7 +181,6 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onCompleted(Exception e, Response<JsonObject> result) {
                         pDialog.dismiss();
-
                         if (e != null){
                             Toast.makeText(
                                     getApplicationContext(),
