@@ -35,6 +35,7 @@ import com.mindorks.paracamera.Camera;
 import java.io.File;
 import java.util.Date;
 
+//TODO: Move code for image upload to next activity.
 public class MainActivity extends AppCompatActivity {
 
     private static final int CHOOSE_IMAGE_FROM_GALLERY = 405;
@@ -104,13 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == Camera.REQUEST_TAKE_PHOTO && resultCode == Activity.RESULT_OK) {
             imagePath = camera.getCameraBitmapPath();
-            String objectCreatedID = uploadImage(imagePath);
-            if(objectCreatedID != null) {
-                Intent intent = new Intent(MainActivity.this, SpineLineDrawnPreviewActivity.class);
-                intent.putExtra("BASE_URL", baseURL);
-                intent.putExtra("SERVER_OBJECT_ID", objectCreatedID);
-                startActivity(intent);
-            }
+            uploadImage(imagePath);
         }
     }
 
@@ -141,13 +136,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 imagePreviewPopUp.dismiss();
-                String objectCreatedID = uploadImage(imagePath);
-                if(objectCreatedID != null) {
-                    Intent intent = new Intent(MainActivity.this, SpineLineDrawnPreviewActivity.class);
-                    intent.putExtra("BASE_URL", baseURL);
-                    intent.putExtra("SERVER_OBJECT_ID", objectCreatedID);
-                    startActivity(intent);
-                }
+                uploadImage(imagePath);
             }
         });
     }
@@ -165,15 +154,14 @@ public class MainActivity extends AppCompatActivity {
         return path;
     }
 
-    private String uploadImage(String imagePath){
+    private void uploadImage(String imagePath){
         final ProgressDialog pDialog = new ProgressDialog(MainActivity.this);
         pDialog.setMessage("Detecting Spines");
         pDialog.setCancelable(false);
         pDialog.show();
-        final String objectCreatedID[] = new String[1];
         Ion.with(getApplicationContext())
                 .load("POST", baseURL + "api/create-bookshelf/?format=json")
-                .setTimeout(60 * 60 * 1000)
+                .setTimeout(60 * 60 * 40)
                 .setMultipartFile("image", "image/jpeg", new File(imagePath))
                 .asJsonObject()
                 .withResponse()
@@ -191,10 +179,16 @@ public class MainActivity extends AppCompatActivity {
 
                         HeadersResponse responseHeader = result.getHeaders();
                         Headers headers = responseHeader.getHeaders();
-                        objectCreatedID[0] = headers.get("id");
+                        String objectCreatedID = headers.get("id");
+
+                        if(objectCreatedID != null) {
+                            Intent intent = new Intent(MainActivity.this, SpineLineDrawnPreviewActivity.class);
+                            intent.putExtra("BASE_URL", baseURL);
+                            intent.putExtra("SERVER_OBJECT_ID", objectCreatedID);
+                            startActivity(intent);
+                        }
                     }
                 });
-        return objectCreatedID[0];
     }
     @Override
     protected void onDestroy() {
