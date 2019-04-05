@@ -70,8 +70,10 @@ public class TemporaryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 IPAddress = editText.getText().toString();
-                url = "http://" + IPAddress + ":8000/api/1?format=json";
-                new GetBooks().execute();
+                String baseURL = "http://" + IPAddress + ":8000/";
+                Intent splashScreenIntent = new Intent(TemporaryActivity.this, SplashScreenActivity.class);
+                splashScreenIntent.putExtra("BASE_URL", baseURL);
+                startActivity(splashScreenIntent);
             }
         });
 

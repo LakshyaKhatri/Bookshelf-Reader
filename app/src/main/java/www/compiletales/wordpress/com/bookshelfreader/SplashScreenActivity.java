@@ -12,6 +12,9 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         // TODO: Remove this.
-        startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+        Intent mainActivityIntent = new Intent(SplashScreenActivity.this, MainActivity.class);
+        String baseURL = getIntent().getStringExtra("BASE_URL");
+        mainActivityIntent.putExtra("BASE_URL", baseURL);
+        startActivity(mainActivityIntent);
     }
 }
