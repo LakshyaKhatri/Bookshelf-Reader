@@ -14,6 +14,7 @@ import com.koushikdutta.ion.Ion;
 
 import java.io.File;
 
+//TODO: Remove this activity and add preview to a popup in next activity.
 public class SpineLineDrawnPreviewActivity extends AppCompatActivity {
 
     String baseURL;
