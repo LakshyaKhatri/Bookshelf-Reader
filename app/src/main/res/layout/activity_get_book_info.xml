@@ -23,4 +23,13 @@
         app:lottie_rawRes="@raw/book_loading"
         app:lottie_loop="true"
         app:lottie_autoPlay="true" />
+
+    <Button
+        android:id="@+id/get_spine_info_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get Info"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="44dp"/>
 </RelativeLayout>

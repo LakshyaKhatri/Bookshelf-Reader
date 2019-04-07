@@ -22,10 +22,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".GetBookInfoActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".SpineLineDrawnPreviewActivity"
-            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ShowBookInfoActivity"></activity>
+        <activity
+            android:name=".GetBookInfoActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".SpineLineDrawnPreviewActivity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SplashScreenActivity" />
         <activity android:name=".TemporaryActivity">

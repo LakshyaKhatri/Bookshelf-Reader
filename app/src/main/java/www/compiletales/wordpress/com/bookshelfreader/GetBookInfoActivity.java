@@ -1,5 +1,6 @@
 package www.compiletales.wordpress.com.bookshelfreader;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -8,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -34,7 +36,7 @@ public class GetBookInfoActivity extends AppCompatActivity {
     ViewPager croppedImagesViewPager;
     CroppedImagesViewPagerAdapter croppedImagesPagerAdapter;
     LayoutInflater inflater;
-
+    int currentSpine = -1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +66,7 @@ public class GetBookInfoActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int i) {
-                Toast.makeText(GetBookInfoActivity.this, titles.get(i), Toast.LENGTH_SHORT).show();
+                currentSpine = i;
             }
 
             @Override
@@ -72,6 +74,32 @@ public class GetBookInfoActivity extends AppCompatActivity {
 
             }
         });
+
+        final Button getSpineInfoButton = findViewById(R.id.get_spine_info_button);
+        getSpineInfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GetBookInfoActivity.this, ShowBookInfoActivity.class);
+                intent.putExtra("BOOK_TITLE", titles.get(currentSpine));
+                startActivity(intent);
+            }
+        });
+        getSpineInfoButton.setVisibility(View.GONE);
+
+        croppedImagesViewPager.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+            @Override
+            public void onViewAttachedToWindow(View v) {
+                getSpineInfoButton.setVisibility(View.VISIBLE);
+                spineLoadingView.setVisibility(View.GONE);
+                croppedImagesViewPager.removeOnAttachStateChangeListener(this);
+            }
+
+            @Override
+            public void onViewDetachedFromWindow(View v) {
+
+            }
+        });
+
         Ion.with(this)
                 .load(baseURL + "api/spines/" + objectCreatedID + "/?format=json")
                 .asJsonArray()
@@ -108,7 +136,6 @@ public class GetBookInfoActivity extends AppCompatActivity {
                                                                         imageView.setImageBitmap(result);
                                                                         croppedImagesPagerAdapter.addView(view);
                                                                         croppedImagesPagerAdapter.notifyDataSetChanged();
-                                                                        spineLoadingView.setVisibility(View.GONE);
                                                                     } else {
                                                                         int indexOfConflictedTitle = croppedImages.indexOf(result);
                                                                         String newText = titles.get(indexOfConflictedTitle);
@@ -137,7 +164,6 @@ public class GetBookInfoActivity extends AppCompatActivity {
                                                                     imageView.setImageBitmap(result);
                                                                     croppedImagesPagerAdapter.addView(view);
                                                                     croppedImagesPagerAdapter.notifyDataSetChanged();
-                                                                    spineLoadingView.setVisibility(View.GONE);
                                                                 } else {
                                                                     int indexOfConflictedTitle = croppedImages.indexOf(result);
                                                                     String newText = titles.get(indexOfConflictedTitle);
