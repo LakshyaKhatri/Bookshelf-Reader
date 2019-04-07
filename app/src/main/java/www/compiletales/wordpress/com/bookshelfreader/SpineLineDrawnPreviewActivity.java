@@ -63,6 +63,7 @@ public class SpineLineDrawnPreviewActivity extends AppCompatActivity {
                 intent.putExtra("BASE_URL", baseURL);
                 intent.putExtra("SERVER_OBJECT_ID", objectCreatedID);
                 startActivity(intent);
+                finish();
             }
         });
     }
