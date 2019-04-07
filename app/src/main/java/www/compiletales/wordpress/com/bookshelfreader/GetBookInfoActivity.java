@@ -23,15 +23,18 @@ import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GetBookInfoActivity extends AppCompatActivity {
 
     String baseURL;
     String objectCreatedID;
-    ArrayList<BookSpine> croppedImages;
+    ArrayList<Bitmap> croppedImages;
+    ArrayList<String> titles;
     ViewPager croppedImagesViewPager;
     CroppedImagesViewPagerAdapter croppedImagesPagerAdapter;
     LayoutInflater inflater;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +54,24 @@ public class GetBookInfoActivity extends AppCompatActivity {
         croppedImagesViewPager.setAdapter(croppedImagesPagerAdapter);
         inflater = LayoutInflater.from(getApplicationContext());
         croppedImages = new ArrayList<>();
+        titles = new ArrayList<>();
 
+        croppedImagesViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                Toast.makeText(GetBookInfoActivity.this, titles.get(i), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
         Ion.with(this)
                 .load(baseURL + "api/spines/" + objectCreatedID + "/?format=json")
                 .asJsonArray()
@@ -74,20 +94,29 @@ public class GetBookInfoActivity extends AppCompatActivity {
                                             detector.processImage(rotatedImage)
                                                     .addOnSuccessListener(new OnSuccessListener<FirebaseVisionText>() {
                                                         @Override
-                                                        public void onSuccess(FirebaseVisionText firebaseVisionTextHorizontal) {
-                                                            final String verticalText = firebaseVisionTextHorizontal.getText();
-                                                            if(verticalText.length() > 3) {
-                                                                croppedImages.add(new BookSpine(
-                                                                        result,
-                                                                        verticalText
-                                                                ));
-                                                                View view = inflater.inflate(R.layout.cropped_images_view_pager_item, null);
-                                                                ImageView imageView = view.findViewById(R.id.view_pager_item_image_view);
-                                                                imageView.setImageBitmap(result);
-                                                                croppedImagesPagerAdapter.addView(view);
-                                                                croppedImagesPagerAdapter.notifyDataSetChanged();
-                                                                spineLoadingView.setVisibility(View.GONE);
-                                                            }
+                                                        public void onSuccess(FirebaseVisionText firebaseVisionText) {
+                                                            List<FirebaseVisionText.TextBlock> blocks = firebaseVisionText.getTextBlocks();
+                                                            String verticalText = "";
+                                                            for(int i = 0; i < blocks.size(); i++)
+                                                                verticalText += " " + blocks.get(i).getText().toUpperCase();
+                                                                if (verticalText.length() > 3 ) {
+                                                                    if(!(croppedImages.contains(result))){
+                                                                        croppedImages.add(result);
+                                                                        titles.add(verticalText);
+                                                                        View view = inflater.inflate(R.layout.cropped_images_view_pager_item, null);
+                                                                        ImageView imageView = view.findViewById(R.id.view_pager_item_image_view);
+                                                                        imageView.setImageBitmap(result);
+                                                                        croppedImagesPagerAdapter.addView(view);
+                                                                        croppedImagesPagerAdapter.notifyDataSetChanged();
+                                                                        spineLoadingView.setVisibility(View.GONE);
+                                                                    } else {
+                                                                        int indexOfConflictedTitle = croppedImages.indexOf(result);
+                                                                        String newText = titles.get(indexOfConflictedTitle);
+                                                                        newText = newText + " " + verticalText;
+                                                                        titles.remove(indexOfConflictedTitle);
+                                                                        titles.add(indexOfConflictedTitle, newText);
+                                                                    }
+                                                                }
                                                         }
                                                     });
                                             FirebaseVisionImage image = FirebaseVisionImage.fromBitmap(result);
@@ -95,18 +124,27 @@ public class GetBookInfoActivity extends AppCompatActivity {
                                                     .addOnSuccessListener(new OnSuccessListener<FirebaseVisionText>() {
                                                         @Override
                                                         public void onSuccess(FirebaseVisionText firebaseVisionText) {
-                                                            String horizontalText = firebaseVisionText.getText();
+                                                            List<FirebaseVisionText.TextBlock> blocks = firebaseVisionText.getTextBlocks();
+                                                            String horizontalText = "";
+                                                            for(int i = 0; i < blocks.size(); i++)
+                                                                horizontalText += " " + blocks.get(i).getText().toUpperCase();
                                                             if(horizontalText.length() > 3) {
-                                                                croppedImages.add(new BookSpine(
-                                                                        result,
-                                                                        horizontalText
-                                                                ));
-                                                                View view = inflater.inflate(R.layout.cropped_images_view_pager_item, null);
-                                                                ImageView imageView = view.findViewById(R.id.view_pager_item_image_view);
-                                                                imageView.setImageBitmap(result);
-                                                                croppedImagesPagerAdapter.addView(view);
-                                                                croppedImagesPagerAdapter.notifyDataSetChanged();
-                                                                spineLoadingView.setVisibility(View.GONE);
+                                                                if(!(croppedImages.contains(result))) {
+                                                                    croppedImages.add(result);
+                                                                    titles.add(horizontalText);
+                                                                    View view = inflater.inflate(R.layout.cropped_images_view_pager_item, null);
+                                                                    ImageView imageView = view.findViewById(R.id.view_pager_item_image_view);
+                                                                    imageView.setImageBitmap(result);
+                                                                    croppedImagesPagerAdapter.addView(view);
+                                                                    croppedImagesPagerAdapter.notifyDataSetChanged();
+                                                                    spineLoadingView.setVisibility(View.GONE);
+                                                                } else {
+                                                                    int indexOfConflictedTitle = croppedImages.indexOf(result);
+                                                                    String newText = titles.get(indexOfConflictedTitle);
+                                                                    newText = newText + " " + horizontalText;
+                                                                    titles.remove(indexOfConflictedTitle);
+                                                                    titles.add(indexOfConflictedTitle, newText);
+                                                                }
                                                             }
                                                         }
                                                     });
