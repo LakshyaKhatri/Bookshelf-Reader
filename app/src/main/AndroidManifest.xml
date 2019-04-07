@@ -24,7 +24,7 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".ShowBookInfoActivity"></activity>
         <activity
-            android:name=".GetBookInfoActivity"
+            android:name=".CropSpinesActivity"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".SpineLineDrawnPreviewActivity"

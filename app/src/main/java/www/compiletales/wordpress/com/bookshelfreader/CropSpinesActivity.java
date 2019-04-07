@@ -2,7 +2,6 @@ package www.compiletales.wordpress.com.bookshelfreader;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -10,9 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,7 +24,7 @@ import com.koushikdutta.ion.Ion;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetBookInfoActivity extends AppCompatActivity {
+public class CropSpinesActivity extends AppCompatActivity {
 
     String baseURL;
     String objectCreatedID;
@@ -40,7 +37,7 @@ public class GetBookInfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_get_book_info);
+        setContentView(R.layout.activity_crop_spines);
 
 
         baseURL = getIntent().getStringExtra("BASE_URL");
@@ -79,7 +76,7 @@ public class GetBookInfoActivity extends AppCompatActivity {
         getSpineInfoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(GetBookInfoActivity.this, ShowBookInfoActivity.class);
+                Intent intent = new Intent(CropSpinesActivity.this, ShowBookInfoActivity.class);
                 intent.putExtra("BOOK_TITLE", titles.get(currentSpine));
                 startActivity(intent);
             }
@@ -110,7 +107,7 @@ public class GetBookInfoActivity extends AppCompatActivity {
                         for(int i = 0; i < result.size(); i++){
                             croppedImageURL = result.get(i).getAsJsonObject()
                                             .get("image").getAsString();
-                            Ion.with(GetBookInfoActivity.this)
+                            Ion.with(CropSpinesActivity.this)
                                     .load(croppedImageURL)
                                     .setTimeout(60 * 60 * 200)
                                     .asBitmap()

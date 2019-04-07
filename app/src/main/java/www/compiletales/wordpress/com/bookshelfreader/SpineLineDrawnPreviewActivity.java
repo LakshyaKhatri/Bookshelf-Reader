@@ -7,12 +7,9 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
-
-import java.io.File;
 
 //TODO: Remove this activity and add preview to a popup in next activity.
 public class SpineLineDrawnPreviewActivity extends AppCompatActivity {
@@ -62,7 +59,7 @@ public class SpineLineDrawnPreviewActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(
                         SpineLineDrawnPreviewActivity.this,
-                        GetBookInfoActivity.class);
+                        CropSpinesActivity.class);
                 intent.putExtra("BASE_URL", baseURL);
                 intent.putExtra("SERVER_OBJECT_ID", objectCreatedID);
                 startActivity(intent);
