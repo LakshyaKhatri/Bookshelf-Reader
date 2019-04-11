@@ -186,6 +186,11 @@ public class MainActivity extends AppCompatActivity {
                             intent.putExtra("BASE_URL", baseURL);
                             intent.putExtra("SERVER_OBJECT_ID", objectCreatedID);
                             startActivity(intent);
+                        } else {
+                            Toast.makeText(
+                                    getApplicationContext(),
+                                    "Error while recognizing books",
+                                    Toast.LENGTH_LONG).show();
                         }
                     }
                 });

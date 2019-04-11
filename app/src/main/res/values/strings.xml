@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Bookshelf Reader</string>
+    <string name="description_demo_text">Features the best practices in the art and science of
+        constructing software-topics include design, applying good techniques to construction,
+        eliminating errors, planning, managing construction activities, and relating personal
+        character to superior software. Original. (Intermediate)</string>
 </resources>

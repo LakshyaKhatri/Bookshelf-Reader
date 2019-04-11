@@ -77,6 +77,7 @@ public class CropSpinesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CropSpinesActivity.this, ShowBookInfoActivity.class);
+                intent.putExtra("BASE_URL", baseURL);
                 intent.putExtra("BOOK_TITLE", titles.get(currentSpine));
                 startActivity(intent);
             }

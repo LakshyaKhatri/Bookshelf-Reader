@@ -1,9 +1,269 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ShowBookInfoActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/book_loading_view"
+        android:layout_width="match_parent"
+        android:layout_height="256dp"
+        app:lottie_rawRes="@raw/book_loading"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true" />
+
+    <ImageView
+        android:id="@+id/cover_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="256dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="centerInside"
+        tools:src="@drawable/googleg_standard_color_18"/>
+
+    <TextView
+        android:id="@+id/title_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cover_image_view"
+        android:textSize="22sp"
+        android:textColor="#2d3142"
+        android:textStyle="bold"
+        tools:text="Hello"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/sub_title_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_text_view"
+        android:textSize="18sp"
+        android:textColor="@android:color/darker_gray"
+        android:textStyle="bold"
+        tools:text="Hello"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/author_label_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Author:"
+        android:textSize="16sp"
+        android:textColor="#2d3142"
+        android:layout_below="@id/sub_title_text_view"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:paddingLeft="16dp"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/author_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Lakshya Khatri"
+        android:textSize="16sp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_below="@id/sub_title_text_view"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@id/pages_label_text_view"
+        android:layout_toEndOf="@id/pages_label_text_view"/>
+
+    <TextView
+        android:id="@+id/price_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="365 Rs."
+        android:textSize="22sp"
+        android:textColor="#f06449"
+        android:layout_below="@id/sub_title_text_view"
+        android:textAlignment="center"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@id/author_text_view"
+        android:layout_toEndOf="@id/author_text_view"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:id="@+id/pages_label_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Pages:"
+        android:textSize="16sp"
+        android:textColor="#2d3142"
+        android:layout_below="@id/author_label_text_view"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:paddingLeft="16dp"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/pages_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="512"
+        android:textSize="16sp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_below="@id/author_text_view"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@id/pages_label_text_view"
+        android:layout_toEndOf="@id/pages_label_text_view"/>
+
+    <TextView
+        android:id="@+id/category_label_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category:"
+        android:textSize="16sp"
+        android:textColor="#2d3142"
+        android:layout_below="@id/pages_label_text_view"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:paddingLeft="16dp"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/category_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Computers"
+        android:textSize="16sp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_below="@id/pages_text_view"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@id/pages_label_text_view"
+        android:layout_toEndOf="@id/pages_label_text_view"/>
+
+    <TextView
+        android:id="@+id/dimensions_label_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dimensions:"
+        android:textSize="16sp"
+        android:textColor="#2d3142"
+        android:layout_below="@id/category_label_text_view"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:paddingLeft="16dp"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/dimensions_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="15x16x17 cms"
+        android:textSize="16sp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_below="@id/category_text_view"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@id/pages_label_text_view"
+        android:layout_toEndOf="@id/pages_label_text_view"/>
+
+    <TextView
+        android:id="@+id/isbn_ten_label_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ISBN 10:"
+        android:textSize="16sp"
+        android:textColor="#2d3142"
+        android:layout_below="@id/dimensions_label_text_view"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:paddingLeft="16dp"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/isbn_ten_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="1234567890"
+        android:textSize="16sp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_below="@id/dimensions_text_view"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@id/pages_label_text_view"
+        android:layout_toEndOf="@id/pages_label_text_view"/>
+
+    <TextView
+        android:id="@+id/isbn_thirteen_label_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ISBN 13:"
+        android:textSize="16sp"
+        android:textColor="#2d3142"
+        android:layout_below="@id/isbn_ten_label_text_view"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:paddingLeft="16dp"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/isbn_thirteen_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="1234567890123"
+        android:textSize="16sp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_below="@id/isbn_ten_text_view"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@id/pages_label_text_view"
+        android:layout_toEndOf="@id/pages_label_text_view"/>
+
+    <TextView
+        android:id="@+id/description_label_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description:"
+        android:textSize="16sp"
+        android:textColor="#2d3142"
+        android:layout_below="@id/isbn_thirteen_label_text_view"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:paddingLeft="16dp"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/description_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="@string/description_demo_text"
+        android:textSize="16sp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_below="@id/isbn_thirteen_text_view"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@id/pages_label_text_view"
+        android:layout_toEndOf="@id/pages_label_text_view"/>
+
+    <TextView
+        android:id="@+id/rating_text_view"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/rating_star"
+        android:drawableStart="@drawable/rating_star"
+        android:background="#1e90ff"
+        tools:text="4.5"
+        android:textSize="16sp"
+        android:paddingLeft="3dp"
+        android:paddingStart="3dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:textColor="@android:color/black"
+        android:textAlignment="center"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"/>
+
+    <Button
+        android:id="@+id/get_book_on_amazon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get on amazon"
+        android:layout_below="@id/description_text_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:layout_marginTop="32dp"/>
+</RelativeLayout>
+</ScrollView>
