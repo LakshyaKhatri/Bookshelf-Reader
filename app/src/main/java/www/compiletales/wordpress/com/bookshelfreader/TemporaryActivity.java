@@ -6,14 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 
 public class TemporaryActivity extends AppCompatActivity {
 
     String IPAddress;
-    private TextView textView;
-    private String url = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
