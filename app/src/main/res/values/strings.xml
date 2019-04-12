@@ -4,4 +4,6 @@
         constructing software-topics include design, applying good techniques to construction,
         eliminating errors, planning, managing construction activities, and relating personal
         character to superior software. Original. (Intermediate)</string>
+    <string name="bookshelf">Bookshelf</string>
+    <string name="reader">Reader</string>
 </resources>
