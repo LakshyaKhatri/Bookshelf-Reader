@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#2d3142</color>
+    <color name="colorPrimaryDark">#aaaaaa</color>
     <color name="colorAccent">#D81B60</color>
     <color name="bStraightLine">#4d2695</color>
     <color name="bCurve">#03c7c4</color>
+    <color name="purpleFlat">#7641bc</color>
+    <color name="smokeWhite">#fafafa</color>
+    <color name="turquoiseFlat">#41c3ac</color>
+    <color name="redFlat">#ff6b57</color>
+    <color name="yellowFlat">#ffc914</color>
+    <color name="blackFlat">#2d3142</color>
 </resources>
