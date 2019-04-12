@@ -14,8 +14,6 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        final LottieAnimationView splashScreenAnimationView = findViewById(R.id.splash_screen_animation_view);
-
         Handler handler = new Handler();
 
         handler.postDelayed(new Runnable() {
