@@ -58,7 +58,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="?android:attr/selectableItemBackground"
-                        android:text="Cancel" />
+                        android:text="Cancel"
+                        android:textColor="@android:color/white"/>
 
                     <View
                         android:layout_width="match_parent"
@@ -86,7 +87,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="?android:attr/selectableItemBackground"
-                        android:text="Proceed" />
+                        android:text="Proceed"
+                        android:textColor="@android:color/white"/>
 
                     <View
                         android:layout_width="match_parent"
