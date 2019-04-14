@@ -6,6 +6,7 @@ import android.graphics.Matrix;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +25,8 @@ import com.koushikdutta.ion.Ion;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.relex.circleindicator.CircleIndicator;
+
 public class CropSpinesActivity extends AppCompatActivity {
 
     String baseURL;
@@ -39,6 +42,10 @@ public class CropSpinesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crop_spines);
 
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Bookshelf Reader");
 
         baseURL = getIntent().getStringExtra("BASE_URL");
         objectCreatedID = getIntent().getStringExtra("SERVER_OBJECT_ID");
@@ -71,6 +78,9 @@ public class CropSpinesActivity extends AppCompatActivity {
 
             }
         });
+
+        final CircleIndicator indicator = findViewById(R.id.viewpager_indicator);
+        indicator.setViewPager(croppedImagesViewPager);
 
         final Button getSpineInfoButton = findViewById(R.id.get_spine_info_button);
         getSpineInfoButton.setOnClickListener(new View.OnClickListener() {
@@ -134,6 +144,7 @@ public class CropSpinesActivity extends AppCompatActivity {
                                                                         imageView.setImageBitmap(result);
                                                                         croppedImagesPagerAdapter.addView(view);
                                                                         croppedImagesPagerAdapter.notifyDataSetChanged();
+                                                                        indicator.setViewPager(croppedImagesViewPager);
                                                                     } else {
                                                                         int indexOfConflictedTitle = croppedImages.indexOf(result);
                                                                         String newText = titles.get(indexOfConflictedTitle);
@@ -162,6 +173,7 @@ public class CropSpinesActivity extends AppCompatActivity {
                                                                     imageView.setImageBitmap(result);
                                                                     croppedImagesPagerAdapter.addView(view);
                                                                     croppedImagesPagerAdapter.notifyDataSetChanged();
+                                                                    indicator.setViewPager(croppedImagesViewPager);
                                                                 } else {
                                                                     int indexOfConflictedTitle = croppedImages.indexOf(result);
                                                                     String newText = titles.get(indexOfConflictedTitle);

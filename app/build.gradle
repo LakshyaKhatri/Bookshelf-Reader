@@ -32,6 +32,7 @@ dependencies {
     implementation 'com.koushikdutta.ion:ion:2.+'
     implementation 'com.mindorks:paracamera:0.2.2'
     implementation "com.airbnb.android:lottie:2.7.0"
+    implementation 'me.relex:circleindicator:1.2.2'
 }
 
 apply plugin: 'com.google.gms.google-services'
