@@ -21,7 +21,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:theme="@style/AppTheme">
         <activity android:name=".ShowBookInfoActivity"></activity>
         <activity
             android:name=".CropSpinesActivity"
@@ -30,13 +30,14 @@
             android:name=".SpineLineDrawnPreviewActivity"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".SplashScreenActivity" />
-        <activity android:name=".TemporaryActivity">
+        <activity android:name=".SplashScreenActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".TemporaryActivity">
         </activity>
 
         <meta-data
