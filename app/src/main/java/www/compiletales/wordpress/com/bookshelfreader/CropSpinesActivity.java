@@ -98,7 +98,6 @@ public class CropSpinesActivity extends AppCompatActivity {
             @Override
             public void onViewAttachedToWindow(View v) {
                 getSpineInfoButton.setVisibility(View.VISIBLE);
-                spineLoadingView.setVisibility(View.GONE);
                 croppedImagesViewPager.removeOnAttachStateChangeListener(this);
             }
 
@@ -145,6 +144,7 @@ public class CropSpinesActivity extends AppCompatActivity {
                                                                         croppedImagesPagerAdapter.addView(view);
                                                                         croppedImagesPagerAdapter.notifyDataSetChanged();
                                                                         indicator.setViewPager(croppedImagesViewPager);
+                                                                        spineLoadingView.setVisibility(View.GONE);
                                                                     } else {
                                                                         int indexOfConflictedTitle = croppedImages.indexOf(result);
                                                                         String newText = titles.get(indexOfConflictedTitle);
@@ -174,6 +174,7 @@ public class CropSpinesActivity extends AppCompatActivity {
                                                                     croppedImagesPagerAdapter.addView(view);
                                                                     croppedImagesPagerAdapter.notifyDataSetChanged();
                                                                     indicator.setViewPager(croppedImagesViewPager);
+                                                                    spineLoadingView.setVisibility(View.GONE);
                                                                 } else {
                                                                     int indexOfConflictedTitle = croppedImages.indexOf(result);
                                                                     String newText = titles.get(indexOfConflictedTitle);
