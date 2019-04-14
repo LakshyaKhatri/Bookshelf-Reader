@@ -28,9 +28,11 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".SpineLineDrawnPreviewActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity">
+        </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".SplashScreenActivity" ></activity>
+        <activity android:name=".SplashScreenActivity" >
+        </activity>
         <activity android:name=".TemporaryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
