@@ -22,6 +22,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 String baseURL = getIntent().getStringExtra("BASE_URL");
                 mainActivityIntent.putExtra("BASE_URL", baseURL);
                 startActivity(mainActivityIntent);
+                finish();
             }
         }, 1700);
     }

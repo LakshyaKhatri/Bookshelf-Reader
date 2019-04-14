@@ -7,7 +7,6 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
-import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -17,12 +16,9 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.JsonObject;
@@ -34,7 +30,6 @@ import com.koushikdutta.ion.Response;
 import com.mindorks.paracamera.Camera;
 
 import java.io.File;
-import java.util.Date;
 
 //TODO: Move code for image upload to next activity.
 public class MainActivity extends AppCompatActivity {
@@ -130,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         imagePreviewPopUp.setBackgroundDrawable(new BitmapDrawable());
 
         imagePreviewPopUp.showAtLocation(layout, Gravity.NO_GRAVITY, -20, 95);
-        ImageView discardPreviewIcon = layout.findViewById(R.id.discard_cross_view);
+        ImageView discardPreviewIcon = layout.findViewById(R.id.go_back_view);
         discardPreviewIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

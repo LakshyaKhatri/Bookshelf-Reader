@@ -30,14 +30,13 @@
             android:name=".SpineLineDrawnPreviewActivity"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".SplashScreenActivity" >
+        <activity android:name=".SplashScreenActivity" ></activity>
+        <activity android:name=".TemporaryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".TemporaryActivity">
         </activity>
 
         <meta-data
