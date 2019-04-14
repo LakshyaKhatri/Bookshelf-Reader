@@ -56,46 +56,46 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Initializations
-//        captureImageFromCamera = findViewById(R.id.capture_image_from_camera);
-//        chooseImageFromGallery = findViewById(R.id.choose_image_from_gallery);
+        captureImageFromCamera = findViewById(R.id.capture_image_from_camera);
+        chooseImageFromGallery = findViewById(R.id.choose_image_from_gallery);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Bookshelf Reader");
         baseURL = getIntent().getStringExtra("BASE_URL");
 
         // Camera variable to capture image from camera
-//        camera = new Camera.Builder()
-//                .resetToCorrectOrientation(true)
-//                .setTakePhotoRequestCode(CAPTURE_IMAGE_FROM_CAMERA)
-//                .setDirectory("Bookshelves")
-//                .setName("bookshelf" + System.currentTimeMillis())
-//                .setImageFormat(Camera.IMAGE_JPEG)
-//                .setImageHeight(1000)
-//                .build(MainActivity.this);
-//
-//        chooseImageFromGallery.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(
-//                        Intent.ACTION_PICK,
-//                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//
-//                startActivityForResult(intent, CHOOSE_IMAGE_FROM_GALLERY);
-//
-//            }
-//        });
-//
-//        captureImageFromCamera.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                try {
-//                    camera.takePicture();
-//                }catch (Exception e){
-//                    e.printStackTrace();
-//                }
-//
-//            }
-//        });
+        camera = new Camera.Builder()
+                .resetToCorrectOrientation(true)
+                .setTakePhotoRequestCode(CAPTURE_IMAGE_FROM_CAMERA)
+                .setDirectory("Bookshelves")
+                .setName("bookshelf" + System.currentTimeMillis())
+                .setImageFormat(Camera.IMAGE_JPEG)
+                .setImageHeight(1000)
+                .build(MainActivity.this);
+
+        chooseImageFromGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                startActivityForResult(intent, CHOOSE_IMAGE_FROM_GALLERY);
+
+            }
+        });
+
+        captureImageFromCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    camera.takePicture();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            }
+        });
 
 
     }
