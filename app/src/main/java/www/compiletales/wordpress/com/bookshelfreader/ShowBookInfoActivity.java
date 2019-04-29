@@ -143,8 +143,6 @@ public class ShowBookInfoActivity extends AppCompatActivity {
                                                             .replace(" ", "+") +
                                                             "+by+" + authorTextView.getText().toString().
                                                             replace(" ", "+");
-                                                    Toast.makeText(ShowBookInfoActivity.this,
-                                                            url, Toast.LENGTH_LONG).show();
                                                     Intent intent = new Intent(Intent.ACTION_VIEW);
                                                     intent.setData(Uri.parse(url));
                                                     startActivity(intent);
