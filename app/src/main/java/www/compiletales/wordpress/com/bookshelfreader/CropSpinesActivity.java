@@ -36,7 +36,7 @@ public class CropSpinesActivity extends AppCompatActivity {
     ViewPager croppedImagesViewPager;
     CroppedImagesViewPagerAdapter croppedImagesPagerAdapter;
     LayoutInflater inflater;
-    int currentSpine = -1;
+    int currentSpine = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,20 +90,6 @@ public class CropSpinesActivity extends AppCompatActivity {
                 intent.putExtra("BASE_URL", baseURL);
                 intent.putExtra("BOOK_TITLE", titles.get(currentSpine));
                 startActivity(intent);
-            }
-        });
-        getSpineInfoButton.setVisibility(View.GONE);
-
-        croppedImagesViewPager.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
-            @Override
-            public void onViewAttachedToWindow(View v) {
-                getSpineInfoButton.setVisibility(View.VISIBLE);
-                croppedImagesViewPager.removeOnAttachStateChangeListener(this);
-            }
-
-            @Override
-            public void onViewDetachedFromWindow(View v) {
-
             }
         });
 
