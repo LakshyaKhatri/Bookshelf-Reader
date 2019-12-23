@@ -31,7 +31,7 @@ import com.mindorks.paracamera.Camera;
 
 import java.io.File;
 
-//TODO: Move code for image upload to next activity.
+
 public class MainActivity extends AppCompatActivity {
 
     private static final int CHOOSE_IMAGE_FROM_GALLERY = 405;
@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void uploadImage(String imagePath){
         final ProgressDialog pDialog = new ProgressDialog(MainActivity.this);
-        pDialog.setMessage("Detecting Spines");
+        pDialog.setMessage("Detecting Books");
         pDialog.setCancelable(false);
         pDialog.show();
         Ion.with(getApplicationContext())
@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
                         if (e != null){
                             Toast.makeText(
                                     getApplicationContext(),
-                                    "Error while recognizing books",
+                                    "No books found",
                                     Toast.LENGTH_LONG).show();
                             return;
                         }
@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             Toast.makeText(
                                     getApplicationContext(),
-                                    "Error while recognizing books",
+                                    "No books found",
                                     Toast.LENGTH_LONG).show();
                         }
                     }
