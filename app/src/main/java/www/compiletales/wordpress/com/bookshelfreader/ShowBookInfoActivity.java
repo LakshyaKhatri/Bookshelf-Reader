@@ -146,7 +146,6 @@ public class ShowBookInfoActivity extends AppCompatActivity {
                                                     Intent intent = new Intent(Intent.ACTION_VIEW);
                                                     intent.setData(Uri.parse(url));
                                                     startActivity(intent);
-
                                                 }
                                             });
                                         }

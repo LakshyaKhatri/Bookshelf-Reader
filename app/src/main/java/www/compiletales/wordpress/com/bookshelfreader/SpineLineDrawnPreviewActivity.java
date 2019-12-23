@@ -12,7 +12,6 @@ import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
-//TODO: Remove this activity and add preview to a popup in next activity.
 public class SpineLineDrawnPreviewActivity extends AppCompatActivity {
 
     String baseURL;
