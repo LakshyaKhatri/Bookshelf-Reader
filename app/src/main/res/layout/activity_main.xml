@@ -42,16 +42,14 @@
             android:id="@+id/capture_image_from_camera_frame"
             android:layout_width="264dp"
             android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
             android:layout_marginBottom="16dp"
-            android:background="@color/purpleFlat"
+            android:background="@drawable/round_button_purple"
             app:layout_constraintBottom_toTopOf="@+id/choose_image_from_gallery_frame"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.503"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            android:backgroundTint="@color/purpleFlat"
+            >
 
             <Button
                 android:id="@+id/capture_image_from_camera"
@@ -59,35 +57,16 @@
                 android:layout_height="match_parent"
                 android:background="?android:attr/selectableItemBackground"
                 android:text="Camera"
-                android:textColor="@color/smokeWhite" />
-
+                android:textColor="@color/smokeWhite"
+                />
         </FrameLayout>
-
-        <View
-            android:layout_width="264dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="12dp"
-            android:background="#22000000"
-            app:layout_constraintBottom_toTopOf="@+id/choose_image_from_gallery_frame"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.503"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/capture_image_from_camera_frame" />
 
         <FrameLayout
             android:id="@+id/choose_image_from_gallery_frame"
             android:layout_width="264dp"
             android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
             android:layout_marginBottom="64dp"
-            android:background="@color/turquoiseFlat"
+            android:background="@drawable/round_button_green"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.503"
@@ -102,21 +81,6 @@
                 android:background="?android:attr/selectableItemBackground"
                 />
         </FrameLayout>
-
-        <View
-            android:layout_width="264dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="60dp"
-            android:background="#22000000"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.503"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/choose_image_from_gallery_frame" />
 
         <TextView
             android:id="@+id/textView"

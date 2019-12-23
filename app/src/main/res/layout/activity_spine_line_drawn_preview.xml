@@ -37,6 +37,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
             android:orientation="horizontal">
 
             <FrameLayout
@@ -45,27 +46,15 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:background="@color/redFlat">
+                android:background="@drawable/round_button_red">
 
-                <LinearLayout
+                <Button
+                    android:id="@+id/cancel_cropping_button"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <Button
-                        android:id="@+id/cancel_cropping_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:text="Cancel"
-                        android:textColor="@android:color/white"/>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="4dp"
-                        android:background="#22000000" />
-
-                </LinearLayout>
+                    android:layout_height="54dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:text="Cancel"
+                    android:textColor="@android:color/white" />
             </FrameLayout>
 
             <FrameLayout
@@ -74,27 +63,15 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:background="@color/turquoiseFlat">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                android:background="@drawable/round_button_green">
 
                     <Button
                         android:id="@+id/proceed_cropping_button"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="54dp"
                         android:background="?android:attr/selectableItemBackground"
                         android:text="Proceed"
-                        android:textColor="@android:color/white"/>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="4dp"
-                        android:background="#22000000" />
-
-                </LinearLayout>
+                        android:textColor="@android:color/white" />
             </FrameLayout>
 
         </LinearLayout>
