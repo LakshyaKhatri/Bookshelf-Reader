@@ -355,7 +355,7 @@
                 android:layout_width="264dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:background="@color/purpleFlat"
+                android:background="@drawable/round_button_purple"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dimensions_text_view">
@@ -364,7 +364,7 @@
                     android:id="@+id/get_on_amazon_button"
                     android:layout_width="264dp"
                     android:layout_height="wrap_content"
-                    android:background="?android:attr/selectableItemBackground"
+                    android:background="@drawable/button_ripple"
                     android:paddingStart="8dp"
                     android:paddingLeft="8dp"
                     android:paddingEnd="8dp"

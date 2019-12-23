@@ -52,7 +52,7 @@
                     android:id="@+id/cancel_cropping_button"
                     android:layout_width="match_parent"
                     android:layout_height="54dp"
-                    android:background="?android:attr/selectableItemBackground"
+                    android:background="@drawable/button_ripple"
                     android:text="Cancel"
                     android:textColor="@android:color/white" />
             </FrameLayout>
@@ -69,7 +69,7 @@
                         android:id="@+id/proceed_cropping_button"
                         android:layout_width="match_parent"
                         android:layout_height="54dp"
-                        android:background="?android:attr/selectableItemBackground"
+                        android:background="@drawable/button_ripple"
                         android:text="Proceed"
                         android:textColor="@android:color/white" />
             </FrameLayout>

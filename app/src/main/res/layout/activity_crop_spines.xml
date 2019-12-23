@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:text="Get Info"
             android:textColor="@color/smokeWhite"
-            android:background="?android:attr/selectableItemBackground" />
+            android:background="@drawable/button_ripple" />
         </FrameLayout>
 
     </LinearLayout>

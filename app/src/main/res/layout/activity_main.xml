@@ -48,14 +48,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
-            android:backgroundTint="@color/purpleFlat"
             >
 
             <Button
                 android:id="@+id/capture_image_from_camera"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="?android:attr/selectableItemBackground"
+                android:background="@drawable/button_ripple"
                 android:text="Camera"
                 android:textColor="@color/smokeWhite"
                 />
@@ -78,7 +77,7 @@
                 android:id="@+id/choose_image_from_gallery"
                 android:text="Gallery"
                 android:textColor="@color/smokeWhite"
-                android:background="?android:attr/selectableItemBackground"
+                android:background="@drawable/button_ripple"
                 />
         </FrameLayout>
 
