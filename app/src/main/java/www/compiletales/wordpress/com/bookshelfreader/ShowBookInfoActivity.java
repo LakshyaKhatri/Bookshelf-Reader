@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.async.http.Headers;
@@ -51,6 +52,7 @@ public class ShowBookInfoActivity extends AppCompatActivity {
         final TextView seeLessTextView = findViewById(R.id.see_less_text_view);
         final TextView publisherTextView = findViewById(R.id.publisher_text_view);
         final Button getOnAmazonButton = findViewById(R.id.get_on_amazon_button);
+        final LottieAnimationView loadingAnimationView = findViewById(R.id.book_info_loading_animation_view);
 
         seeMoreTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,7 +114,13 @@ public class ShowBookInfoActivity extends AppCompatActivity {
                                             Ion.with(ShowBookInfoActivity.this)
                                                     .load(result.get("book_cover_url").getAsString())
                                                     .withBitmap()
-                                                    .intoImageView(bookCoverImageView);
+                                                    .intoImageView(bookCoverImageView)
+                                            .setCallback(new FutureCallback<ImageView>() {
+                                                @Override
+                                                public void onCompleted(Exception e, ImageView result) {
+                                                    loadingAnimationView.setVisibility(View.GONE);
+                                                }
+                                            });
 
                                             titleTextView.setText(result.get("title").getAsString());
                                             authorTextView.setText(result.get("author").getAsString());

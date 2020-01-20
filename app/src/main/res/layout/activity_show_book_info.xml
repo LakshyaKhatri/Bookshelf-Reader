@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
@@ -9,15 +9,17 @@
     android:orientation="vertical">
 
     <include
+        android:id="@+id/toolbar"
         layout="@layout/toolbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"/>
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
         android:scrollbars="none">
 
         <android.support.constraint.ConstraintLayout
@@ -387,13 +389,15 @@
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 
-    <!--<com.airbnb.lottie.LottieAnimationView-->
-        <!--android:id="@+id/book_loading_view"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:background="@android:color/white"-->
-        <!--app:lottie_autoPlay="true"-->
-        <!--app:lottie_loop="true"-->
-        <!--app:lottie_rawRes="@raw/book_loading" />-->
-</LinearLayout>
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/book_info_loading_animation_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/toolbar"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:background="@android:color/white"
+        app:lottie_rawRes="@raw/book_loading" />
+
+</RelativeLayout>
