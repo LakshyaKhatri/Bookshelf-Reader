@@ -29,7 +29,7 @@ import me.relex.circleindicator.CircleIndicator;
 
 public class CropSpinesActivity extends AppCompatActivity {
 
-    String baseURL;
+    String baseURL = "https://lakshya1498.pythonanywhere.com/";
     String objectCreatedID;
     ArrayList<Bitmap> croppedImages;
     ArrayList<String> titles;
@@ -47,7 +47,6 @@ public class CropSpinesActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle("Bookshelf Reader");
 
-        baseURL = getIntent().getStringExtra("BASE_URL");
         objectCreatedID = getIntent().getStringExtra("SERVER_OBJECT_ID");
 
         final FirebaseVisionTextRecognizer detector =
@@ -87,7 +86,6 @@ public class CropSpinesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CropSpinesActivity.this, ShowBookInfoActivity.class);
-                intent.putExtra("BASE_URL", baseURL);
                 intent.putExtra("BOOK_TITLE", titles.get(currentSpine));
                 startActivity(intent);
             }

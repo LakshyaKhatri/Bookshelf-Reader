@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int CHOOSE_IMAGE_FROM_GALLERY = 405;
     private static final int CAPTURE_IMAGE_FROM_CAMERA = 977;
 
-    String baseURL = "";
+    String baseURL = "https://lakshya1498.pythonanywhere.com/";
     Camera camera;
     // Views
     Button captureImageFromCamera;
@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Bookshelf Reader");
-        baseURL = getIntent().getStringExtra("BASE_URL");
 
         // Camera variable to capture image from camera
         camera = new Camera.Builder()
@@ -184,7 +183,6 @@ public class MainActivity extends AppCompatActivity {
 
                         if(objectCreatedID != null) {
                             Intent intent = new Intent(MainActivity.this, SpineLineDrawnPreviewActivity.class);
-                            intent.putExtra("BASE_URL", baseURL);
                             intent.putExtra("SERVER_OBJECT_ID", objectCreatedID);
                             startActivity(intent);
                         } else {

@@ -14,7 +14,7 @@ import com.koushikdutta.ion.Ion;
 
 public class SpineLineDrawnPreviewActivity extends AppCompatActivity {
 
-    String baseURL;
+    String baseURL = "https://lakshya1498.pythonanywhere.com/";
     String objectCreatedID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,6 @@ public class SpineLineDrawnPreviewActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle("Bookshelf Reader");
 
-        baseURL = getIntent().getStringExtra("BASE_URL");
         objectCreatedID = getIntent().getStringExtra("SERVER_OBJECT_ID");
         final ImageView imageView = findViewById(R.id.spine_line_drawn_image_view);
         final LottieAnimationView loading = findViewById(R.id.loading_view);
@@ -64,7 +63,6 @@ public class SpineLineDrawnPreviewActivity extends AppCompatActivity {
                 Intent intent = new Intent(
                         SpineLineDrawnPreviewActivity.this,
                         CropSpinesActivity.class);
-                intent.putExtra("BASE_URL", baseURL);
                 intent.putExtra("SERVER_OBJECT_ID", objectCreatedID);
                 startActivity(intent);
                 finish();

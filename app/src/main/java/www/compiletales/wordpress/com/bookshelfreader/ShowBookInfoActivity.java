@@ -23,7 +23,7 @@ import com.koushikdutta.ion.Response;
 public class ShowBookInfoActivity extends AppCompatActivity {
 
     String bookTitle;
-    String baseURL;
+    String baseURL = "https://lakshya1498.pythonanywhere.com/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,6 @@ public class ShowBookInfoActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle("Bookshelf Reader");
 
-        baseURL = getIntent().getStringExtra("BASE_URL");
         bookTitle = getIntent().getStringExtra("BOOK_TITLE");
         final ImageView bookCoverImageView = findViewById(R.id.cover_image_view);
 //        final LottieAnimationView loadingView = findViewById(R.id.book_loading_view);
