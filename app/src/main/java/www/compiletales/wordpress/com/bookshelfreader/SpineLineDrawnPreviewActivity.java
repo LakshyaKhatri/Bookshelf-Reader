@@ -23,6 +23,11 @@ public class SpineLineDrawnPreviewActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.up_button);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
 
         objectCreatedID = getIntent().getStringExtra("SERVER_OBJECT_ID");
         final ImageView imageView = findViewById(R.id.spine_line_drawn_image_view);

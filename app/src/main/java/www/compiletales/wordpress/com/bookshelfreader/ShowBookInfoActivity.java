@@ -32,6 +32,11 @@ public class ShowBookInfoActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.up_button);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
 
         bookTitle = getIntent().getStringExtra("BOOK_TITLE");
         final ImageView bookCoverImageView = findViewById(R.id.cover_image_view);

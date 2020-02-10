@@ -55,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
         chooseImageFromGallery = findViewById(R.id.choose_image_from_gallery);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.up_button);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
 
         // Camera variable to capture image from camera
         camera = new Camera.Builder()
