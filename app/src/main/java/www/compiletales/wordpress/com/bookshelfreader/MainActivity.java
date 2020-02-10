@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         chooseImageFromGallery = findViewById(R.id.choose_image_from_gallery);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Bookshelf Reader");
 
         // Camera variable to capture image from camera
         camera = new Camera.Builder()

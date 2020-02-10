@@ -32,7 +32,6 @@ public class ShowBookInfoActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Bookshelf Reader");
 
         bookTitle = getIntent().getStringExtra("BOOK_TITLE");
         final ImageView bookCoverImageView = findViewById(R.id.cover_image_view);

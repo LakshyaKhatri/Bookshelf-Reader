@@ -45,7 +45,6 @@ public class CropSpinesActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Bookshelf Reader");
 
         objectCreatedID = getIntent().getStringExtra("SERVER_OBJECT_ID");
 
