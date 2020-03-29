@@ -8,9 +8,11 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -89,9 +91,15 @@ public class CropSpinesActivity extends AppCompatActivity {
         getSpineInfoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CropSpinesActivity.this, ShowBookInfoActivity.class);
-                intent.putExtra("BOOK_TITLE", titles.get(currentSpine));
-                startActivity(intent);
+                if(currentSpine < 0)
+                    return;
+                try {
+                    Intent intent = new Intent(CropSpinesActivity.this, ShowBookInfoActivity.class);
+                    intent.putExtra("BOOK_TITLE", titles.get(currentSpine));
+                    startActivity(intent);
+                } catch(Exception e){
+                    Toast.makeText(CropSpinesActivity.this, "Please wait.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -186,5 +194,15 @@ public class CropSpinesActivity extends AppCompatActivity {
         Matrix matrix = new Matrix();
         matrix.postRotate(angle);
         return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(), matrix, true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                super.onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

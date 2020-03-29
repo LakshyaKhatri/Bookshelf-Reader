@@ -357,6 +357,7 @@
                 android:layout_width="264dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
                 android:background="@drawable/round_button_purple"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
