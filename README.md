@@ -1,7 +1,7 @@
 <img src="assets/Bookshelf_mockup_ios.jpg" alt="Bookshelf Reader Mockup" align="center">
 
 # Bookshelf-Reader
-This application uses the [Bookshelf Reader REST API](https://github.com/LakshyaKhatri/Bookshelf-Reader-API) and provides book information from images of bookshelves.
+This application uses the [Bookshelf Reader REST API](https://github.com/LakshyaKhatri/Bookshelf-Reader-API) and provides book information from images of book spines. Just capture the image from your bookshelf and Bookshelf Reader will give you all the information on the available books in the image.
 
 # Installation
 Just download and install this [APK file](./app-debug.apk)
