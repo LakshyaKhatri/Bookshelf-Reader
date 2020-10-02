@@ -4,10 +4,15 @@
 This application uses the [Bookshelf Reader REST API](https://github.com/LakshyaKhatri/Bookshelf-Reader-API) and provides book information from images of book spines. Just capture the image from your bookshelf and Bookshelf Reader will give you all the information on the available books in the image.
 
 
-**NOTE: THIS PROJECT IS NO LONGER BEING MAINTAINED BY ME BECAUSE OF THE SERVER COSTS AND THE OTHER PROJECTS.**
+**NOTE: THIS PROJECT IS NO LONGER BEING MAINTAINED BY ME BECAUSE OF THE SERVER COSTS AND OTHER PROJECTS.**
 
 # Installation
 Just download and install this [APK file](./app-debug.apk)
+
+# Local Setup
+ - CLone the repo.
+ - Open it in Android Studio
+ - Setup Firebase requirements throught your account
 
 # Usage
 * Capture image of a bookshelf from your camera or upload one from gallary (Make sure the spines are clearly visible).
