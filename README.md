@@ -14,8 +14,8 @@ Just download and install this [APK file](./app-debug.apk)
 
 # Local Setup
  - CLone the repo.
- - Open it in Android Studio
- - Setup Firebase requirements throught your account
+ - Open it in Android Studio.
+ - Setup Firebase requirements throught your account.
 
 # Usage
 * Capture image of a bookshelf from your camera or upload one from gallary (Make sure the spines are clearly visible).
