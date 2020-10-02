@@ -6,6 +6,9 @@ This application uses the [Bookshelf Reader REST API](https://github.com/Lakshya
 
 **NOTE: THIS PROJECT IS NO LONGER BEING MAINTAINED BY ME BECAUSE OF THE SERVER COSTS AND OTHER PROJECTS.**
 
+# Demo
+
+[![Bookshelf Reader Demo](assets/youtube_thumbnail.png)](https://youtu.be/Z8DrP5x00hI)
 # Installation
 Just download and install this [APK file](./app-debug.apk)
 
