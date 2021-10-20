@@ -13,7 +13,7 @@ This application uses the [Bookshelf Reader REST API](https://github.com/Lakshya
 Just download and install this [APK file](./app-debug.apk)
 
 # Local Setup
- - CLone the repo.
+ - Clone the repo.
  - Open it in Android Studio.
  - Setup Firebase requirements throught your account.
 
